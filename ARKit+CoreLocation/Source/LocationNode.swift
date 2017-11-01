@@ -60,6 +60,8 @@ open class LocationAnnotationNode: LocationNode {
     /// For landmarks in the distance, the default is correct
     public var scaleRelativeToDistance = false
     
+    public var object: Any?
+    
     /// Creates a new location node with an image as the indicator.
     ///
     /// - Parameters:
@@ -130,7 +132,7 @@ open class LocationAnnotationNode: LocationNode {
     public convenience init(location: CLLocation?, layer: CALayer) {
         self.init(
             location: location,
-            geometry: SCNPlane(width: layer.bounds.width, height: layer.bounds.height),
+            geometry: SCNPlane(width: layer.bounds.width / 10, height: layer.bounds.height / 10),
             content: layer
         )
     }
@@ -192,3 +194,4 @@ open class LocationAnnotationNode: LocationNode {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
